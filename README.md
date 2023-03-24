@@ -1,3 +1,12 @@
+
+This is the modified version of Pyperplan for our TAMP planner tamp4tree.
+================
+
+  
+Pyperplan
+===========
+  
+
 **Pyperplan** is a lightweight STRIPS planner written in Python.
 
 Please note that Pyperplan deliberately prefers clean code over fast
