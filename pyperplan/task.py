@@ -62,6 +62,15 @@ class Operator:
         assert type(state) in (frozenset, set)
         return (state - self.del_effects) | self.add_effects
 
+    def is_geometric_action(self):
+        action_name = self.name.strip("()").split(" ")[0]
+        if action_name in ["pick", "place"]:
+            return True
+        return False
+
+    def get_target_movable(self):
+        return self.name.strip("()").split(" ")[0]
+    
     def __eq__(self, other):
         return (
             self.name == other.name
