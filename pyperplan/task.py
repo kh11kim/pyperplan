@@ -76,7 +76,7 @@ class Operator:
 
     def get_parent_to(self):
         return self.name.strip("()").split(" ")[3]
-    
+
     def __eq__(self, other):
         return (
             self.name == other.name
