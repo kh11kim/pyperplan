@@ -18,7 +18,7 @@
 """
 Classes for representing a STRIPS planning task
 """
-
+import numpy as np
 
 class Operator:
     """
@@ -64,7 +64,7 @@ class Operator:
 
     def is_geometric_action(self):
         action_name = self.name.strip("()").split(" ")[0]
-        if action_name in ["pick", "place"]:
+        if action_name in ["pick", "place", "stack", "unstack"]:
             return True
         return False
 
@@ -137,7 +137,9 @@ class Task:
         operator and "new_state" the state that results when "op" is applied
         in state "state".
         """
-        return [(op, op.apply(state)) for op in self.operators if op.applicable(state)]
+        states = [(op, op.apply(state)) for op in self.operators if op.applicable(state)]
+        np.random.shuffle(states)
+        return states
 
     def __str__(self):
         s = "Task {0}\n  Vars:  {1}\n  Init:  {2}\n  Goals: {3}\n  Ops:   {4}"
